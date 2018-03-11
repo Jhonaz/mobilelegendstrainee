@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Mobile Legends Trainee
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-segment [(ngModel)]="galleryType" color="primary">
+    <ion-segment-button value="regular">
+      Heroes
+    </ion-segment-button>
+    <ion-segment-button value="topten" (click)="loadTopTen()">
+      Top 10
+    </ion-segment-button>
+  </ion-segment>
+ 
+  <div [ngSwitch]="galleryType">
+    <!-- Responsive Layout with Ion Grid-->
+    <ion-grid *ngSwitchCase="'regular'">
+      <ion-row>
+        <ion-col col-4 col-md-3 col-xl-2 *ngFor="let hero of allHero">
+          <div class="image-container">
+              <img  src="https://img-cdn.mobilelegends.com/{{ hero.icon }}?imageView2/1/w/150/h/150">
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+ 
+    <!-- More Pinterest floating gallery style -->
+    <ion-grid class="images" *ngSwitchCase="'topten'">
+      <ion-row>
+        <ion-col col-6 col-md-3 col-xl-2 *ngFor="let hero of heroTopTenList">
+          <ion-card>
+            <img class= "image-container" src="https://img-cdn.mobilelegends.com/{{ hero.icon }}?imageView2/1/w/150/h/150">
+            <ion-fab right top>
+                <button color="danger" ion-fab mini>
+                  {{ hero.wrank }}
+                </button>
+            </ion-fab>
+            <ion-card-content>
+                <p>{{ hero.name }}</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+</ion-content>
