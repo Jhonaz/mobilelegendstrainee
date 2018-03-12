@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoadingController, ModalController, NavController, ViewController } from 'ionic-angular';
+import { LoadingController, ModalController, ViewController } from 'ionic-angular';
 
 import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
 
