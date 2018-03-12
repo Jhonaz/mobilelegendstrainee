@@ -1,9 +1,17 @@
 page-home {
   .image-container {
+    height: 100px;
+    width: 100px;
+    background-size: cover;
+    border: 5px solid peru;
+    border-radius: 10%;
+  }
+  .image-container-top {
     min-height: 100px;
-    //max-height: 150px;
-    min-width: 100px;
-    //max-width: 150px;
     background-size: cover;
   }
+  .card-content { 
+    text-align: center;
+  }
+  
 }

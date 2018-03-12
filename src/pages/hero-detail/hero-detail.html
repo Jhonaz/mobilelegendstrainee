@@ -1,0 +1,50 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-buttons end>
+      <button ion-button (click)="dismiss()">Cerrar</button>
+    </ion-buttons>
+    <ion-title> {{ selected.name }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  
+  <ion-card>
+        <img class= "image-container-top" src="https://img-cdn.mobilelegends.com/{{ selected.icon }}?imageView2/1/w/150/h/150">
+        <ion-fab right top>
+            <button color="danger" ion-fab mini>
+              {{ selected.wrank }}
+            </button>
+        </ion-fab>
+  </ion-card>  
+
+  <ion-list>
+      <ion-item>
+        Victorias <ion-badge item-end>{{ selected.win }}</ion-badge>
+      </ion-item>
+      <ion-item>
+          Rank <ion-badge item-end>{{ selected.wrank }}</ion-badge>
+      </ion-item>
+      <ion-item>
+          Dificultad <ion-badge item-end>{{ selected.diff }}</ion-badge>
+      </ion-item>
+      <ion-item>
+          Propietarios <ion-badge item-end>{{ selected.own }}</ion-badge>
+      </ion-item>
+  </ion-list>    
+
+
+  <ion-card>
+    <ion-card-header>
+      Historia
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ selected.des }}</p>
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

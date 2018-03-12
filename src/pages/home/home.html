@@ -21,7 +21,7 @@
     <ion-grid *ngSwitchCase="'regular'">
       <ion-row>
         <ion-col col-4 col-md-3 col-xl-2 *ngFor="let hero of allHero">
-          <div class="image-container">
+          <div class="image-container" (click)="viewStats(hero)">
               <img  src="https://img-cdn.mobilelegends.com/{{ hero.icon }}?imageView2/1/w/150/h/150">
           </div>
         </ion-col>
@@ -33,7 +33,7 @@
       <ion-row>
         <ion-col col-6 col-md-3 col-xl-2 *ngFor="let hero of heroTopTenList">
           <ion-card>
-            <img class= "image-container" src="https://img-cdn.mobilelegends.com/{{ hero.icon }}?imageView2/1/w/150/h/150">
+            <img class= "image-container-top" src="https://img-cdn.mobilelegends.com/{{ hero.icon }}?imageView2/1/w/150/h/150">
             <ion-fab right top>
                 <button color="danger" ion-fab mini>
                   {{ hero.wrank }}

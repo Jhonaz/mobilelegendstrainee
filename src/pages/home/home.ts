@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { LoadingController, ModalController, NavController, ViewController } from 'ionic-angular';
 
 import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
-import { Observable } from 'rxjs/Observable';
+
+import { HeroDetailPage } from '../hero-detail/hero-detail';
 
 @Component({
   selector: 'page-home',
@@ -16,31 +17,48 @@ export class HomePage {
   allHero = [];
   heroTopTenList = [];
   galleryType = 'regular';
+  loading: any;
 
-  constructor(public navCtrl: NavController,public db:AngularFireDatabase) {
+  constructor(
+      public loadingCtrl: LoadingController, 
+      public db:AngularFireDatabase, 
+      public modalCtrl: ModalController,
+      public viewCtrl: ViewController) {
+    this.presentLoading();
+
     this.allHeroRef = this.db.list('herolist');
     this.heroesTopTenRef = this.db.list('topten/data');
-    
+
     this.allHeroRef.snapshotChanges(['child_added']).subscribe( heroes => {
       heroes.forEach(hero => {
         this.allHero.push(hero.payload.val());
       });
+      this.loading.dismiss();
     });
-    /*
-    this.heroesTopTenRef.snapshotChanges(['child_added']).subscribe( heroes => {
-      heroes.forEach(hero => {
-        this.heroTopTenList.push(hero.payload.val());
-      });
-    });
-    */
   }
 
   loadTopTen(){
+    this.presentLoading();
     this.heroesTopTenRef.snapshotChanges(['child_added']).subscribe( heroes => {
       heroes.forEach(hero => {
         this.heroTopTenList.push(hero.payload.val());
       });
+      this.loading.dismiss();
     });
+  }
+
+  presentLoading(){
+    this.loading = this.loadingCtrl.create({
+      content : "Cargando"
+    });
+    this.loading.present();
+  }
+
+  viewStats(hero){
+    if(hero){
+      let modal = this.modalCtrl.create(HeroDetailPage, hero);
+      modal.present();
+    }  
   }
 
 }

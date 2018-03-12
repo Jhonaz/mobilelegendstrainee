@@ -8,15 +8,17 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { HeroDetailPage } from '../pages/hero-detail/hero-detail';
 
 export const firebaseConf = {
-    
+  
 }
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    HeroDetailPage
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,8 @@ export const firebaseConf = {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    HeroDetailPage
   ],
   providers: [
     StatusBar,
