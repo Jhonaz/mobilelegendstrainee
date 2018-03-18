@@ -6,13 +6,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database'; 
 
+import { FIREBASE_CREDENTIALS } from './firebase.credentials';
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { HeroDetailPage } from '../pages/hero-detail/hero-detail';
-
-export const firebaseConf = {
-  
-}
 
 @NgModule({
   declarations: [
@@ -23,7 +21,7 @@ export const firebaseConf = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConf,'prueba-web'),
+    AngularFireModule.initializeApp(FIREBASE_CREDENTIALS),
     AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
