@@ -3,15 +3,21 @@ page-home {
     height: 100px;
     width: 100px;
     background-size: cover;
+    margin: auto;
+    img {
+      max-width: 90%;
+      border: 5px solid peru;
+      border-radius: 10%;
+    }
+  }
+  .image-container-top {
+    min-height: 0px;
+    background-size: cover;
     border: 5px solid peru;
     border-radius: 10%;
   }
-  .image-container-top {
-    min-height: 100px;
-    background-size: cover;
-  }
-  .card-content { 
+  .hero-name-card {
     text-align: center;
+    font-weight: bold;
   }
-  
 }
