@@ -13,9 +13,12 @@ export class HomePage {
   allHeroRef: AngularFireList<any>;
   //:TODO esto deberia cargarse luego 
   heroesTopTenRef : AngularFireList<any>;
+  // skiilsHeroRef : AngularFireList<any>;
+
   // local
   allHero = [];
   heroTopTenList = [];
+  skiilsHero = [];
   galleryType = 'regular';
   loading: any;
 
@@ -28,6 +31,7 @@ export class HomePage {
 
     this.allHeroRef = this.db.list('herolist');
     this.heroesTopTenRef = this.db.list('topten/data');
+    // this.skiilsHeroRef = this.db.list('skilllist');    
 
     this.allHeroRef.snapshotChanges(['child_added']).subscribe( heroes => {
       heroes.forEach(hero => {
@@ -35,15 +39,11 @@ export class HomePage {
       });
       this.loading.dismiss();
     });
-  }
 
-  loadTopTen(){
-    this.presentLoading();
     this.heroesTopTenRef.snapshotChanges(['child_added']).subscribe( heroes => {
       heroes.forEach(hero => {
         this.heroTopTenList.push(hero.payload.val());
       });
-      this.loading.dismiss();
     });
   }
 
@@ -54,7 +54,7 @@ export class HomePage {
     this.loading.present();
   }
 
-  viewStats(hero){
+  viewHeroDetail(hero){
     if(hero){
       let modal = this.modalCtrl.create(HeroDetailPage, hero);
       modal.present();

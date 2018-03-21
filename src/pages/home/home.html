@@ -11,7 +11,7 @@
     <ion-segment-button value="regular">
       Heroes
     </ion-segment-button>
-    <ion-segment-button value="topten" (click)="loadTopTen()">
+    <ion-segment-button value="topten">
       Top 10
     </ion-segment-button>
   </ion-segment>
@@ -21,7 +21,7 @@
     <ion-grid *ngSwitchCase="'regular'">
       <ion-row>
         <ion-col col-4 col-md-3 col-xl-2 *ngFor="let hero of allHero">
-          <div class="image-container" (click)="viewStats(hero)">
+          <div class="image-container" (click)="viewHeroDetail(hero)">
               <img  src="https://img-cdn.mobilelegends.com/{{ hero.icon }}?imageView2/1/w/150/h/150">
           </div>
           <div class="hero-name-card">{{hero.name}}</div>
